@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.criminalintent.databinding.ListItemCrimeBinding
+import java.text.DateFormat
 
 
 class CrimeHolder(
@@ -15,7 +16,14 @@ class CrimeHolder(
 
     fun bind(crime: Crime) {
         binding.crimeTitle.text = crime.title
-        binding.crimeDate.text = crime.date.toString()
+        //binding.crimeDate.text = crime.date.toString()
+
+        // TO DO: Create an instance of DateFormat called longDateFormat    https://developer.android.com/reference/kotlin/android/icu/text/DateFormat
+        val longDateFormat = DateFormat.getDateInstance(DateFormat.LONG)
+        // TO DO: Access the longDateFormat instance of Date Format and use .format() to format crime.date
+        // and apply the date (with its formatting) to the crime_date TextView
+        binding.crimeDate.text = longDateFormat.format(crime.date)
+
 
         binding.root.setOnClickListener {
             Toast.makeText(
